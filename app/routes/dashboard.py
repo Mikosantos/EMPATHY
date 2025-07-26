@@ -1,29 +1,20 @@
 from flask import Blueprint, session, redirect, url_for, render_template, request, flash
 from app.extensions import mongo, bcrypt
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import torch
+from transformers import pipeline
 import json
 import random
 import os
 from datetime import datetime
 from bson import ObjectId
 
-# Load tokenizer and model
-tokenizer = AutoTokenizer.from_pretrained("SamLowe/roberta-base-go_emotions")
-model = AutoModelForSequenceClassification.from_pretrained("SamLowe/roberta-base-go_emotions")
-model.eval()  # Set model to eval mode
+# Load the model using HuggingFace pipeline
+classifier = pipeline(
+    task="text-classification",
+    model="SamLowe/roberta-base-go_emotions",
+    top_k=None  # Return all label probabilities (multi-label)
+)
 
-# Load emotion labels
-LABELS_PATH = os.path.join("static", "data", "goemotions_labels.json")  # create this file with the 28 class names in order
-with open(LABELS_PATH, "r") as f:
-    emotion_labels = json.load(f)
-
-# Load meme mapping
-MEME_MAPPING_PATH = os.path.join("static", "data", "meme_mapping.json")
-with open(MEME_MAPPING_PATH, "r") as f:
-    meme_mapping = json.load(f)
-
-# Mapping to 6 basic emotions
+# Basic emotion mapping dictionary (6 basic emotions + neutral)
 GOEMOTIONS_TO_BASIC = {
     "admiration": "happiness",
     "amusement": "happiness",
@@ -61,8 +52,13 @@ GOEMOTIONS_TO_BASIC = {
     "neutral": "neutral"
 }
 
-dash_bp = Blueprint("dashboard", __name__)
+# Load meme mapping from JSON file once
+MEME_MAPPING_PATH = os.path.join("static", "data", "meme_mapping.json")
+with open(MEME_MAPPING_PATH, "r") as f:
+    meme_mapping = json.load(f)
 
+
+dash_bp = Blueprint("dashboard", __name__)
 @dash_bp.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
     if "user_id" not in session:
@@ -78,26 +74,19 @@ def dashboard():
         content = request.form.get("content", "").strip()
 
         if title and content:
-            # Tokenize and run through model
-            inputs = tokenizer(content, return_tensors="pt", truncation=True, padding=True)
-            with torch.no_grad():
-                outputs = model(**inputs)
-                logits = outputs.logits
-                probs = torch.softmax(logits, dim=-1).squeeze()
-
-            # Get top emotion
-            scored_labels = list(zip(emotion_labels, probs.tolist()))
-            sorted_labels = sorted(scored_labels, key=lambda x: x[1], reverse=True)
-            top_emotion_label = sorted_labels[0][0]
+            # Step 1: Run classifier on content
+            model_outputs = classifier([content])
+            predicted = sorted(model_outputs[0], key=lambda x: x['score'], reverse=True)
+            top_emotion_label = predicted[0]['label'].lower()
             basic_emotion = GOEMOTIONS_TO_BASIC.get(top_emotion_label, "neutral")
 
-            print(f"[DEBUG] Basic Emotion Detected: {basic_emotion}")  # debug
+            print(f"[DEBUG] Basic Emotion Detected: {basic_emotion}") # debugging output
 
-            # Select meme
+            # Step 2: Select random meme path from loaded JSON
             meme_list = meme_mapping.get(basic_emotion, [])
             meme_path = random.choice(meme_list) if meme_list else ""
 
-            # Save to MongoDB
+            # Step 3: Save to MongoDB
             mongo.db.journal_entries.insert_one({
                 "user_id": session["user_id"],
                 "email": user.get("email"),
@@ -106,13 +95,16 @@ def dashboard():
                 "meme": meme_path,
                 "emotion": basic_emotion,
                 "date": datetime.now().strftime("%B %d, %Y %I:%M %p"),
-                "isFavorite": False
+                "isFavorite": False  # default state
             })
 
             flash(f"Entry created with {basic_emotion} meme!", "success")
             return redirect(url_for("dashboard.dashboard"))
         else:
             flash("Please fill in all fields", "error")
+
+    # entries = list(mongo.db.journal_entries.find({"user_id": session["user_id"]}))
+    # return render_template("dashboard.html", entries=entries)
 
     search_query = request.args.get("search", "").strip()
     if search_query:
