@@ -84,7 +84,7 @@ def test_dashboard_flow(driver):
         print("✅ Save button found and clicked.")
     time.sleep(1)
 
-    # --- Step 6: Validate ---
+    # --- Step 6: Validatation in Dashboard---
     first_entry = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CSS_SELECTOR, ".entry-item.selected"))
     )
@@ -92,6 +92,12 @@ def test_dashboard_flow(driver):
 
     # Title check (left panel)
     entry_title = first_entry.find_element(By.CSS_SELECTOR, ".title").text
+    dashboard_date = first_entry.find_element(By.CSS_SELECTOR, ".date").text
+    print(dashboard_date)
+    dashboard_memes = driver.find_elements(By.CSS_SELECTOR, "#meme-image")
+    dashboard_meme_count = len(dashboard_memes)
+    print(dashboard_meme_count)
+
     assert entry_title == "Lucky :))", f"Expected title 'Lucky :))', got '{entry_title}'"
     print("✅ Matched title. (left panel)")
     time.sleep(1)
@@ -121,8 +127,60 @@ def test_dashboard_flow(driver):
         EC.visibility_of_element_located((By.CSS_SELECTOR, "#meme-image"))
     )
     assert meme.is_displayed(), "Meme image is not visible!"
-    print("✅ Meme image is visible!")
+    print("✅ Meme image is visible.")
     time.sleep(1)
+
+    # --- Step 7: Validatation in All Entries ---
+    all_entries_link = driver.find_element(By.XPATH, "//img[@alt='All Entries']")
+    all_entries_link.click()
+    time.sleep(2)
+
+    first_row = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, ".entries-table tbody tr"))
+    )
+
+    all_entries_title = first_row.find_element(By.CSS_SELECTOR, ".title").text
+    all_entries_date = first_row.find_element(By.CSS_SELECTOR, ".date").text
+    print(all_entries_date)
+
+    assert all_entries_title == entry_title, (
+        f"Title mismatch. Dashboard='{entry_title}', All Entries='{all_entries_title}'"
+    )
+    print("✅ Matched title in All Entries.")
+    time.sleep(1)
+
+    assert all_entries_date == dashboard_date, (
+        f"Date mismatch. Dashboard='{dashboard_date}', All Entries='{all_entries_date}'"
+    )
+    print("✅ Matched date in All Entries.")
+    time.sleep(1)
+
+    # --- Step 8: Validatation in Profile ---
+    profile_btn = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//img[@alt='Profile']"))
+    )
+    profile_btn.click()
+    time.sleep(2)
+
+    profile_memes = WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".meme-img"))
+    )
+    profile_meme_count = len(profile_memes)
+
+    assert profile_meme_count == dashboard_meme_count, (
+        f"Mismatch in meme count. Dashboard={dashboard_meme_count}, "
+        f"Profile={profile_meme_count}"
+    )
+    print("✅ Meme counts match between Dashboard and Profile.")
+    time.sleep(1)
+
+    # --- Step 9: Log Out --- 
+    logout_btn = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//img[@alt='Logout']"))
+    )
+    logout_btn.click()
+    print(f"✅ Logged out successfully.")
+    time.sleep(2)
 
     # Close the browser
     driver.quit()
