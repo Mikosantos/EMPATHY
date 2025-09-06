@@ -8,7 +8,7 @@
                     "memes/meme_156.jpg", "memes/meme_157.jpg", "memes/meme_165.jpg", "memes/meme_167.jpg", "memes/meme_172.jpg",
                     "memes/meme_174.jpg", "memes/meme_177.jpg", "memes/meme_190.jpg", "memes/meme_206.jpg", "memes/meme_227.jpg",
                     "memes/meme_233.jpg", "memes/meme_234.jpg", "memes/meme_235.jpg", "memes/meme_254.jpg", "memes/meme_265.jpg",
-                    "memes/meme_266.jpg", "memes/meme_11.jpg",  "memes/meme_9.jpg",   "memes/meme_291.jpg"
+                    "memes/meme_266.jpg", "memes/meme_11.jpg",  "memes/meme_9.jpg",   "memes/meme_291.jpg", "memes/meme_300.jpg"
                 ],
 
     "sadness":   [
@@ -23,7 +23,7 @@
                     "memes/meme_84.jpg",  "memes/meme_85.png",  "memes/meme_87.jpg",  "memes/meme_88.jpg",  "memes/meme_89.jpg",
                     "memes/meme_90.jpg",  "memes/meme_92.jpg",  "memes/meme_94.jpg",  "memes/meme_95.jpg",  "memes/meme_97.jpg",
                     "memes/meme_100.jpg", "memes/meme_101.jpg", "memes/meme_102.jpg", "memes/meme_104.jpg", "memes/meme_105.jpg",
-                    "memes/meme_106.png", "memes/meme_107.jpg", "memes/meme_108.png", "memes/meme_110.png", "memes/meme_115.jpg",
+                    "memes/meme_106.jpg", "memes/meme_107.jpg", "memes/meme_108.jpg", "memes/meme_110.png", "memes/meme_115.jpg",
                     "memes/meme_116.jpg", "memes/meme_118.jpg", "memes/meme_121.jpg", "memes/meme_122.jpg", "memes/meme_123.jpg",
                     "memes/meme_125.jpg", "memes/meme_126.jpg", "memes/meme_130.jpg", "memes/meme_134.jpg", "memes/meme_136.jpg",
                     "memes/meme_137.jpg", "memes/meme_145.jpg", "memes/meme_147.jpg","memes/meme_154.jpg",  "memes/meme_155.jpg",
@@ -33,13 +33,14 @@
                     "memes/meme_186.jpg", "memes/meme_187.jpg", "memes/meme_188.jpg", "memes/meme_189.jpg", "memes/meme_197.jpg",
                     "memes/meme_200.jpg", "memes/meme_202.jpg", "memes/meme_213.jpg", "memes/meme_218.jpg", "memes/meme_223.jpg",
                     "memes/meme_237.jpg", "memes/meme_248.png", "memes/meme_259.jpg", "memes/meme_261.jpg", "memes/meme_288.jpg",
-                    "memes/meme_270.jpg", "memes/meme_272.jpg", "memes/meme_264.jpg", "memes/meme_289.jpg", "memes/meme_293.jpg"
+                    "memes/meme_270.jpg", "memes/meme_272.jpg", "memes/meme_264.jpg", "memes/meme_289.jpg", "memes/meme_293.jpg",
+                    "memes/meme_296.jpg", "memes/meme_303.jpg", "memes/meme_304.jpg"
                  ],
 
     "fear":      [
                     "memes/meme_24.jpg",  "memes/meme_27.jpg",  "memes/meme_29.jpg",  "memes/meme_37.jpg",  "memes/meme_53.jpg",
                     "memes/meme_65.jpg",  "memes/meme_68.jpg",  "memes/meme_71.jpg",  "memes/meme_73.jpg",  "memes/meme_79.jpg",
-                    "memes/meme_84.jpg",  "memes/meme_87.jpg",  "memes/meme_92.jpg",  "memes/meme_96.jpg",  "memes/meme_106.png",
+                    "memes/meme_87.jpg",  "memes/meme_92.jpg",  "memes/meme_96.jpg",  "memes/meme_106.png",
                     "memes/meme_124.jpg", "memes/meme_139.jpg", "memes/meme_147.jpg", "memes/meme_159.jpg", "memes/meme_161.jpg",
                     "memes/meme_164.jpg", "memes/meme_173.jpg", "memes/meme_175.jpg", "memes/meme_189.jpg", "memes/meme_199.jpg",
                     "memes/meme_200.jpg", "memes/meme_201.jpg", "memes/meme_229.jpg", "memes/meme_246.jpg", "memes/meme_250.jpg",
@@ -63,7 +64,8 @@
                     "memes/meme_242.jpg", "memes/meme_243.jpg", "memes/meme_244.jpg", "memes/meme_245.jpg", "memes/meme_247.jpg",
                     "memes/meme_248.jpg", "memes/meme_250.jpg", "memes/meme_264.jpg", "memes/meme_271.jpg", "memes/meme_274.jpg",
                     "memes/meme_275.jpg", "memes/meme_276.jpg", "memes/meme_279.jpg", "memes/meme_279.jpg", "memes/meme_282.jpg",
-                    "memes/meme_285.jpg", "memes/meme_287.jpg", "memes_meme_292.jpg", "memes_meme_294.jpg"
+                    "memes/meme_285.jpg", "memes/meme_287.jpg", "memes_meme_292.jpg", "memes_meme_294.jpg", "memes/meme_299.jpg",
+                    "memes/meme_306.jpg"
                  ],
 
     "surprise":  [
@@ -77,7 +79,8 @@
                     "memes/meme_243.jpg", "memes/meme_246.jpg", "memes/meme_247.jpg", "memes/meme_249.jpg", "memes/meme_250.jpg",
                     "memes/meme_251.jpg", "memes/meme_253.jpg", "memes/meme_255.jpg", "memes/meme_256.jpg", "memes/meme_257.jpg",
                     "memes/meme_258.jpg", "memes/meme_263.jpg", "memes/meme_267.jpg", "memes/meme_268.jpg", "memes/meme_281.jpg",
-                    "memes/meme_286.jpg", "memes/meme_291.jpg"
+                    "memes/meme_286.jpg", "memes/meme_291.jpg", "memes/meme_295.jpg", "memes/meme_297.jpg", "memes/meme_27.jpg",
+                    "memes/meme_301.jpg"
                  ],
 
     "disgust":   [
@@ -90,12 +93,14 @@
                     "memes/meme_225.jpg", "memes/meme_226.jpg", "memes/meme_228.jpg", "memes/meme_230.jpg", "memes/meme_231.jpg",
                     "memes/meme_236.jpg", "memes/meme_240.jpg", "memes/meme_241.jpg", "memes/meme_243.jpg", "memes/meme_246.jpg",
                     "memes/meme_251.jpg", "memes/meme_253.jpg", "memes/meme_259.jpg", "memes/meme_260.jpg", "memes/meme_12.jpg",
-                    "memes/meme_262.jpg", "memes/meme_265.jpg", "memes/meme_269.jpg", "memes/meme_270.jpg", "memes/meme_273.jpg"
+                    "memes/meme_262.jpg", "memes/meme_265.jpg", "memes/meme_269.jpg", "memes/meme_270.jpg", "memes/meme_273.jpg",
+                    "memes/meme_297.jpg"
                  ],
 
     "neutral":   [
                     "memes/meme_1.jpg",   "memes/meme_29.jpg",  "memes/meme_41.jpg",  "memes/meme_112.jpg", "memes/meme_278.jpg",
                     "memes/meme_162.jpg", "memes/meme_178.jpg", "memes/meme_181.jpg", "memes/meme_232.jpg", "memes/meme_283.jpg",
-                    "memes/meme_277.jpg", "memes/meme_252.png", "memes/meme_284.jpg", "memes/meme_146.jpg"
+                    "memes/meme_277.jpg", "memes/meme_252.png", "memes/meme_284.jpg", "memes/meme_146.jpg", "memes/meme_298.jpg",
+                    "memes/meme_302.jpg", "memes/meme_305.jpg"
                  ]
 }
